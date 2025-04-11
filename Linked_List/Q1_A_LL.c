@@ -53,12 +53,14 @@ int main()
 
 	while (c != 0)
 	{
+		
 		printf("\nPlease input your choice(1/2/3/0): ");
 		scanf("%d", &c);
 
 		switch (c)
 		{
 		case 1:
+			//삽입
 			printf("Input an integer that you want to add to the linked list: ");
 			scanf("%d", &i);
 			j = insertSortedLL(&ll, i);
@@ -71,7 +73,7 @@ int main()
 		case 3:
 			printf("The resulting sorted linked list is: ");
 			printList(&ll);
-			removeAllItems(&ll);
+			//removeAllItems(&ll);
 			break;
 		case 0:
 			removeAllItems(&ll);
@@ -91,6 +93,40 @@ int main()
 int insertSortedLL(LinkedList *ll, int item)
 {
 	/* add your code here */
+	ListNode *newNode = (ListNode *)malloc(sizeof(ListNode));
+	newNode->item = item;
+	ListNode *cur = ll->head;
+	ListNode *prev = NULL;
+	int idx = 0;
+	while(cur != NULL && cur->item <= item){
+		prev = cur;
+		cur = cur->next;
+		idx++;
+	}
+
+	if(prev == NULL){
+		//prev가 NULL이면 while문을 돌지 않음 -> 맨 처음 끼워넣기
+		if(ll->head != NULL && ll->head->item == item){
+			free(newNode);
+			return -1;
+		}
+
+		newNode->next = ll->head;
+		ll->head = newNode;
+	}
+	else{
+		//중간이거나 맨 뒤
+		if(prev->item == item){
+			free(newNode);
+			return -1;
+		}
+
+		newNode->next = cur;
+		prev->next = newNode;
+	}
+	ll->size++;
+
+	return idx;
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
