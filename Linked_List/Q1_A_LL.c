@@ -98,6 +98,7 @@ int insertSortedLL(LinkedList *ll, int item)
 	ListNode *cur = ll->head;
 	ListNode *prev = NULL;
 	int idx = 0;
+	// cur->item <= item이어야 같은 경우를 체크가능함
 	while(cur != NULL && cur->item <= item){
 		prev = cur;
 		cur = cur->next;
