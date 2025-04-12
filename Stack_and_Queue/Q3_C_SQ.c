@@ -103,7 +103,17 @@ int main()
 
 int isStackPairwiseConsecutive(Stack *s)
 {
-  /* add your code here */
+	LinkedList * ll = &(s->ll);
+
+	if(ll->size % 2 != 0) return 0;
+
+	while(!isEmptyStack(s)){
+		int a = pop(s);
+		int b = pop(s);
+		if(a-b != 1 && b-a != 1) return 0; 
+	}
+	return 1;
+
 }
 
 //////////////////////////////////////////////////////////////////////////////////

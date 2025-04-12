@@ -111,7 +111,12 @@ int main()
 
 void removeUntil(Stack *s, int value)
 {
-/* add your code here */
+	LinkedList *ll = &(s->ll);
+	ListNode *cur = ll->head;
+
+	while(peek(s) != value){
+		pop(s);
+	}
 }
 
 //////////////////////////////////////////////////////////////////////////////////

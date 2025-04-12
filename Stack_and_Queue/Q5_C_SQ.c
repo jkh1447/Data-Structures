@@ -109,7 +109,20 @@ int main()
 
 void recursiveReverse(Queue *q)
 {
-/* add your code here */
+	LinkedList *ll = &(q->ll);
+	ListNode **ptrHead = &(ll->head);
+
+	if((*ptrHead)->next == NULL) return;
+
+	ListNode *cur = *ptrHead;
+	*ptrHead = (*ptrHead)->next;
+	recursiveReverse(q);
+	ListNode *tmp = *ptrHead;
+	while(tmp->next != NULL){
+		tmp = tmp->next;
+	}
+	tmp->next = cur;
+	cur->next = NULL;
 }
 
 //////////////////////////////////////////////////////////////////
