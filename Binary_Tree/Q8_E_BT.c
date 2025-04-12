@@ -102,7 +102,15 @@ int main()
 
 int hasGreatGrandchild(BTNode *node)
 {
-	/* add your code here */
+	if(node == NULL) return -1;
+    int leftHeight = 1 + hasGreatGrandchild(node->left);
+    int rightHeight = 1 + hasGreatGrandchild(node->right);
+    int maxHeight;
+    if(leftHeight >= rightHeight) maxHeight = leftHeight;
+    else maxHeight = rightHeight;
+    if(maxHeight >= 3) printf("%d\n", node->item);
+    return maxHeight;
+    
 }
 
 //////////////////////////////////////////////////////////////////////////////////
