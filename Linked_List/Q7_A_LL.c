@@ -89,8 +89,8 @@ void RecursiveReverse(ListNode **ptrHead)
 {
 	if((*ptrHead)->next == NULL) return;
 
-	ListNode *cur = *ptrHead; //head의 포인터
-	*ptrHead = (*ptrHead)->next;
+	ListNode *cur = *ptrHead; //head 노드의 포인터
+	*ptrHead = (*ptrHead)->next; //head포인터의 값이 바뀌는 것 -> 헤드포인터의 주소는 그대로
 	RecursiveReverse(ptrHead);
 	ListNode *tmp = *ptrHead;
 	while(tmp->next != NULL){

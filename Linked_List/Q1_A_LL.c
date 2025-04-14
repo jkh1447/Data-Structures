@@ -106,7 +106,7 @@ int insertSortedLL(LinkedList *ll, int item)
 	}
 
 	if(prev == NULL){
-		//prev가 NULL이면 while문을 돌지 않음 -> 맨 처음 끼워넣기
+		//prev가 NULL이면 while문을 돌지 않음 -> 맨 처음 끼워넣기 or 처음 노드 삽입
 		if(ll->head != NULL && ll->head->item == item){
 			free(newNode);
 			return -1;
@@ -254,3 +254,4 @@ int removeNode(LinkedList *ll, int index){
 
 	return -1;
 }
+
