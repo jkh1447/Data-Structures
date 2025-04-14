@@ -113,7 +113,80 @@ void postOrderIterativeS2(BSTNode *root)
    deletes the key and returns the new root. Make recursive function. */
 BSTNode* removeNodeFromTree(BSTNode *root, int value)
 {
-	/* add your code here */
+	if(root->left != NULL && root->left->item == value){
+		if(root->left->left == NULL && root->left->right == NULL){
+			root->left = NULL;
+			return;
+		}
+
+		if(root->left->left == NULL && root->left->right != NULL){
+			root->left = root->left->right;
+			return;
+		}
+		else if(root->left->left != NULL && root->left->right == NULL){
+			root->left = root->left->left;
+			return;
+		}
+		BSTNode *targetNode = root->left;
+		BSTNode *prev = NULL;
+		BSTNode *cur = root->left->right;
+		while(cur->left != NULL){
+			prev = cur;
+			cur = cur->left;
+		}
+
+		if(prev==NULL){
+			targetNode->item = cur->item;
+			targetNode->right = NULL;
+			return;
+		}
+
+		targetNode->item = cur->item;
+		prev->left = NULL; 
+		return;
+
+
+	}
+	else if(root->right != NULL && root->right->item == value){
+		if(root->right->left == NULL && root->right->right == NULL){
+			root->right = NULL;
+			return;
+		} 
+		if(root->right->left == NULL && root->right->right != NULL){
+			root->right = root->right->right;
+			return;
+		}
+		else if(root->right->left != NULL && root->right->right == NULL){
+			root->right = root->right->left;
+			return;
+		}
+
+		BSTNode *targetNode = root->right;
+		BSTNode *prev = NULL;
+		BSTNode *cur = root->right->right;
+		while(cur->left != NULL){
+			prev = cur;
+			cur = cur->left;
+		}
+
+		if(prev==NULL){
+			targetNode->item = cur->item;
+			targetNode->right = NULL;
+			return;
+		}
+
+		targetNode->item = cur->item;
+		prev->left = NULL; 
+		return;
+	}
+	else{
+		if(root->item < value){
+			if(root->right != NULL) removeNodeFromTree(root->right, value);
+		}
+		else{
+			if(root->left != NULL) removeNodeFromTree(root->left, value);
+		}
+	}
 }
 ///////////////////////////////////////////////////////////////////////////////
 

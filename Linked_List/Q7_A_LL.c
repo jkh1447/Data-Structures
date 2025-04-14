@@ -87,18 +87,28 @@ int main()
 
 void RecursiveReverse(ListNode **ptrHead)
 {
-	if((*ptrHead)->next == NULL) return;
-
-	ListNode *cur = *ptrHead; //head 노드의 포인터
-	*ptrHead = (*ptrHead)->next; //head포인터의 값이 바뀌는 것 -> 헤드포인터의 주소는 그대로
-	RecursiveReverse(ptrHead);
-	ListNode *tmp = *ptrHead;
-	while(tmp->next != NULL){
-		tmp = tmp->next;
-	}
-	tmp->next = cur;
-	cur->next = NULL;
+	// if((*ptrHead)->next == NULL) return;
+	// ListNode *cur = *ptrHead; //head 노드의 포인터
+	// *ptrHead = (*ptrHead)->next; //head포인터의 값이 바뀌는 것 -> 헤드포인터의 주소는 그대로
+	// RecursiveReverse(ptrHead);
+	// ListNode *tmp = *ptrHead;
+	// while(tmp->next != NULL){
+	// 	tmp = tmp->next;
+	// }
+	// tmp->next = cur;
+	// cur->next = NULL;
 	
+	ListNode *cur = *ptrHead;
+	if(cur == NULL || cur->next == NULL) return;
+	//마지막 원소에서 두번째 시점까지 재귀가 들어간다.
+	ListNode *rest = cur->next;
+	RecursiveReverse(&rest);
+
+	cur->next->next = cur;
+	cur->next = NULL;
+	*ptrHead = rest;
+
+
 }
 
 //////////////////////////////////////////////////////////////////////////////////
