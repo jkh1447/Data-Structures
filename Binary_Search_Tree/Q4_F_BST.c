@@ -121,6 +121,7 @@ void postOrderIterativeS1(BSTNode *root)
 		for(; cur != NULL; cur=cur->left){
 			push(&s, cur);
 		}
+		if(isEmpty(&s)) break;
 
 		
 		BSTNode *top = peek(&s);

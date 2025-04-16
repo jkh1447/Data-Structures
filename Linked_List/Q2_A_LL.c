@@ -106,7 +106,7 @@ void alternateMergeLinkedList(LinkedList *ll1, LinkedList *ll2)
 	ListNode *cur_ll1 = ll1->head;
 	ListNode *cur_ll2 = ll2->head;
 	
-
+	
 	while(cur_ll1 != NULL && cur_ll2 != NULL){
 		
 		//list1에 연결
